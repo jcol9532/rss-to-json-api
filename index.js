@@ -1,7 +1,14 @@
 const express = require('express');
+const cors = require('cors');
 const Parser = require('rss-parser');
 const app = express();
 const parser = new Parser();
+
+
+app.use(cors({
+  origin: 'https://nsitspecialist.ca'
+}));
+
 
 app.get('/api/rss-to-json', async (req, res) => {
   const feedUrl = req.query.url;
